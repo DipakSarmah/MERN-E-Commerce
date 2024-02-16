@@ -1,6 +1,5 @@
-import { sampleProducts } from './data'
-import { Container, Col, Row, Navbar, Nav } from 'react-bootstrap'
-
+import { Container, Navbar, Nav } from 'react-bootstrap'
+import { Outlet } from 'react-router-dom'
 function App() {
   return (
     <div className="d-flex flex-column vh-100">
@@ -20,19 +19,7 @@ function App() {
         </Navbar>
       </header>
       <Container className="mt-3">
-        <Row>
-          {sampleProducts.map((product) => (
-            <Col key={product.slug} sm={6} md={4} lg={3}>
-              <img
-                className="product-image"
-                src={product.image}
-                alt={product.name}
-              />
-              <h2>{product.name}</h2>
-              <p>${product.price}</p>
-            </Col>
-          ))}
-        </Row>
+        <Outlet />
       </Container>
 
       <footer>
