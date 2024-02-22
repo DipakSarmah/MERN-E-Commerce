@@ -4,9 +4,16 @@ import { Product } from '../types/Product'
 
 // useQuery is used to get data requested
 export const useGetProductsQuery = () => {
-  const { data, isLoading, error } = useQuery({
+  return useQuery({
     queryKey: ['products'],
     queryFn: async () => (await apiClient.get<Product[]>(`api/products`)).data,
   })
-  return { data, isLoading, error }
+}
+
+export const useGetProductDetailsBySlug = (slug: string) => {
+  return useQuery({
+    queryKey: ['products', slug],
+    queryFn: async () =>
+      (await apiClient.get<Product>(`api/products/${slug}`)).data,
+  })
 }
