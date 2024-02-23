@@ -12,7 +12,6 @@ function ProductPage() {
   const params = useParams()
   const { id: slug } = params
   const { data: product, isLoading, error } = useGetProductDetailsBySlug(slug!)
-
   return isLoading ? (
     <LoadingBox />
   ) : error ? (
