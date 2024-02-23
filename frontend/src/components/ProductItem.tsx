@@ -6,9 +6,9 @@ import { useContext } from 'react'
 import { Store } from '../Store'
 import { CartItem } from '../types/Card'
 import { convertProductToCartItem } from '../utils'
+import { toast } from 'react-toastify'
 
 function ProductItem({ product }: { product: Product }) {
-  
   const { state, dispatch } = useContext(Store)
 
   const {
@@ -16,7 +16,6 @@ function ProductItem({ product }: { product: Product }) {
   } = state
 
   const addToCartHandler = (item: CartItem) => {
-    
     const existItem = cartItems.find((x) => x._id === product._id)
     const quantity = existItem ? existItem.quantity + 1 : 1
 
@@ -28,6 +27,7 @@ function ProductItem({ product }: { product: Product }) {
       type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },
     })
+    toast.success('Product added to the cart')
   }
   return (
     <Card>
