@@ -21,3 +21,7 @@ img.large {
 img.thumbnail {
   height: 80px;
 }
+.small-container {
+  max-width: 500px; /* Adjust the width as per your requirement */
+  margin: auto; /* Center the container horizontally */
+}

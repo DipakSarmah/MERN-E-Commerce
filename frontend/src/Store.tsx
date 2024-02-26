@@ -1,18 +1,23 @@
 import React from 'react'
 import { Cart, CartItem } from './types/Card'
+import { UserInfo } from './types/UserInfo'
 
 type AppState = {
   mode: string
   cart: Cart
+  userInfo?: UserInfo
 }
 
 // since object are store in localstore as a string
 // we need to convert string to object using JSON.parse(anyString)
 const initialState: AppState = {
+  userInfo: localStorage.getItem('userInfo')
+    ? JSON.parse(localStorage.getItem('userInfo')!)
+    : null,
   mode: localStorage.getItem('mode')
     ? localStorage.getItem('mode')!
     : window.matchMedia &&
-      window.matchMedia('prefers-color-scheme: dark').matches
+      window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light',
 
@@ -37,6 +42,8 @@ type Action =
   | { type: 'SWITCH_MODE' }
   | { type: 'CART_ADD_ITEM'; payload: CartItem }
   | { type: 'CART_REMOVE_ITEM'; payload: CartItem }
+  | { type: 'USER_SIGNIN'; payload: UserInfo }
+  | { type: 'USER_SIGNOUT'; payload: UserInfo }
 
 function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
@@ -66,6 +73,32 @@ function reducer(state: AppState, action: Action): AppState {
       localStorage.setItem('cartItems', JSON.stringify(cartItems))
       return { ...state, cart: { ...state.cart, cartItems } }
     }
+
+    case 'USER_SIGNIN':
+      return { ...state, userInfo: action.payload }
+    case 'USER_SIGNOUT':
+      return {
+        mode:
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light',
+        cart: {
+          cartItems: [],
+          paymentMethod: 'PayPal',
+          shippingAddress: {
+            fullName: '',
+            address: '',
+            postalCode: '',
+            city: '',
+            country: '',
+          },
+          itemsPrice: 0,
+          shippingPrice: 0,
+          taxPrice: 0,
+          totalPrice: 0,
+        },
+      }
     default:
       return state
   }
