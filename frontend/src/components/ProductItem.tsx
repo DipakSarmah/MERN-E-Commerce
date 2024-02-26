@@ -4,7 +4,7 @@ import { Product } from '../types/Product'
 import Rating from './Rating'
 import { useContext } from 'react'
 import { Store } from '../Store'
-import { CartItem } from '../types/Card'
+import { CartItem } from '../types/Cart'
 import { convertProductToCartItem } from '../utils'
 import { toast } from 'react-toastify'
 
