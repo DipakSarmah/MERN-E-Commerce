@@ -1,29 +1,28 @@
-import { modelOptions, prop, getModelForClass } from '@typegoose/typegoose'
+import { modelOptions, prop, getModelForClass, Ref } from '@typegoose/typegoose'
 import { Product } from './productModel'
 import { User } from './userModel'
 
-@modelOptions({ schemaOptions: { timestamps: true } })
 class ShippingAddress {
   @prop()
   public fullName?: string
 
   @prop()
-  public address!: string
+  public address?: string
 
   @prop()
-  public city!: string
+  public city?: string
 
   @prop()
-  public postalCode!: string
+  public postalCode?: string
 
   @prop()
-  public country!: string
+  public country?: string
 
   @prop()
-  public lat!: string
+  public lat?: string
 
   @prop()
-  public lng!: string
+  public lng?: string
 }
 
 class Item {
@@ -57,12 +56,15 @@ class PaymentResult {
   public email_address!: string
 }
 
-modelOptions({ schemaOptions: { timestamps: true } })
+@modelOptions({ schemaOptions: { timestamps: true } })
 
 export class Order {
   public _id!: string
   @prop()
-  public orderItems: Item[]
+  public orderItems!: Item[]
+
+  @prop()
+  public shippingAddress?: ShippingAddress
 
   @prop({ ref: User })
   public user?: Ref<User>
@@ -71,7 +73,7 @@ export class Order {
   public paymentMethod!: string
 
   @prop()
-  public paymentResult!: PaymentResult
+  public paymentResult?: PaymentResult
 
   @prop({ required: true, default: 0 })
   public itemsPrice!: number
