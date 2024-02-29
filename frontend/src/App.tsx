@@ -4,7 +4,6 @@ import {
   Navbar,
   Nav,
   Button,
-  Badge,
   NavDropdown,
   Form,
   InputGroup,

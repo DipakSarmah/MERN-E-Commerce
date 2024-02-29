@@ -4,7 +4,7 @@ import { useSignupMutation } from '../hooks/userHooks'
 import { toast } from 'react-toastify'
 import { getError } from '../utils'
 import { ApiError } from '../types/ApiError'
-import { Button, Container, Form } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 import { Helmet } from 'react-helmet-async'
 import { Store } from '../Store'
 
@@ -14,10 +14,10 @@ export default function SignupPage() {
   const redirectInUrl = new URLSearchParams(search).get('redirect')
   const redirect = redirectInUrl ? redirectInUrl : '/'
 
-  const [name, setName] = useState()
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-  const [confirmPassword, setConfirmPassword] = useState()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
   const { state, dispatch } = useContext(Store)
   const { userInfo } = state
@@ -28,7 +28,7 @@ export default function SignupPage() {
     }
   }, [navigate, redirect, userInfo])
 
-  const { mutateAsync: signup, isLoading } = useSignupMutation()
+  const { mutateAsync: signup } = useSignupMutation()
 
   const submitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -42,7 +42,7 @@ export default function SignupPage() {
         email,
         password,
       })
-      dispatch({ type: 'USER_SIGNUP', payload: data })
+      dispatch({ type: 'USER_SIGNIN', payload: data })
       localStorage.setItem('userInfo', JSON.stringify(data))
       navigate(redirect)
     } catch (err) {

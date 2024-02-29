@@ -7,10 +7,10 @@ export type Order = {
   shippingAddress: ShippingAddress
   paymentMethod: string
   user: User
-  createAt: string
+  createdAt: string
   isPaid: boolean
   paidAt: string
-  isDeliverd: string
+  isDelivered: string
   deliveredAt: string
   itemsPrice: number
   shippingPrice: number

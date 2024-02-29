@@ -1,5 +1,4 @@
-import { useContext, useEffect } from 'react'
-import { Store } from '../Store'
+import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
   useGetOrderDetailsQuery,
@@ -21,8 +20,8 @@ import {
 } from '@paypal/react-paypal-js'
 
 export default function OrderPage() {
-  const { state } = useContext(Store)
-  const { userInfo } = state
+  // const { state } = useContext(Store)
+  // const { userInfo } = state
   const params = useParams()
 
   const { id: orderId } = params
@@ -33,7 +32,7 @@ export default function OrderPage() {
     refetch,
   } = useGetOrderDetailsQuery(orderId!)
 
-  const { mutateAsync: payOrder, isLoading: loadingPay } = usePayOrderMutation()
+  const { mutateAsync: payOrder, isPending: loadingPay } = usePayOrderMutation()
 
   const testPayHandler = async () => {
     await payOrder({ orderId: orderId! })
@@ -51,7 +50,7 @@ export default function OrderPage() {
         paypalDispatch({
           type: 'resetOptions',
           value: {
-            'client-id': paypalConfig!.clientId,
+            clientId: paypalConfig!.clientId,
             currency: 'USD',
           },
         })
@@ -66,7 +65,7 @@ export default function OrderPage() {
 
   const paypalbuttonTransactionProps: PayPalButtonsComponentProps = {
     style: { layout: 'vertical' },
-    createOrder(data, actions) {
+    createOrder(_data, actions) {
       return actions.order
         .create({
           purchase_units: [
@@ -81,7 +80,7 @@ export default function OrderPage() {
           return orderID
         })
     },
-    onApprove(data, actions) {
+    onApprove(_data, actions) {
       return actions.order!.capture().then(async (details) => {
         try {
           await payOrder({ orderId: orderId!, ...details })
@@ -219,6 +218,7 @@ export default function OrderPage() {
                         <Button onClick={testPayHandler}>Test Pay</Button>
                       </div>
                     )}
+                    {loadingPay && <LoadingBox></LoadingBox>}
                   </ListGroup.Item>
                 )}
               </ListGroup>
