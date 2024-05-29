@@ -5,7 +5,8 @@
 ![E-Commerce Website Screenshot 2](https://github.com/DipakSarmah/MERN-E-Commerce/assets/92313801/0f2ad097-04dc-4489-9e78-52b80fc05e08)
 ![E-Commerce Website Screenshot 3](https://github.com/DipakSarmah/MERN-E-Commerce/assets/92313801/1e1a0762-fc49-41eb-ab8a-27504d8514be)
 ![E-Commerce Website Screenshot 4](https://github.com/DipakSarmah/MERN-E-Commerce/assets/92313801/ac21ac9e-baff-4c18-8522-9b7cf0dc1d95)
-![E-Commerce Website Screenshot 5](https://github.com/DipakSarmah/MERN-E-Commerce/assets/92313801/747f1960-240d-4233-a81a-f98f221b2535)
+![[E-Commerce Website Screenshot 5](https://github.com/DipakSarmah/MERN-E-Commerce/assets/92313801/6c834026-002d-414e-98cd-0f90643650d4)
+![[E-Commerce Website Screenshot 6](https://github.com/DipakSarmah/MERN-E-Commerce/assets/92313801/377824e6-3240-4f96-adf4-5ab7482fb723)
 
 ## Project Description
 
