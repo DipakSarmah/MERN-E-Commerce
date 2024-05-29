@@ -1,6 +1,6 @@
 # E-Commerce MERN Application
 
-![E-Commerce Website Screenshot](path/to/your/image.png)
+
 ![E-Commerce Website Screenshot 1](https://github.com/DipakSarmah/MERN-E-Commerce/assets/92313801/4929b26f-6d8f-4121-a63a-6159b17847b6)
 ![E-Commerce Website Screenshot 2](https://github.com/DipakSarmah/MERN-E-Commerce/assets/92313801/0f2ad097-04dc-4489-9e78-52b80fc05e08)
 ![E-Commerce Website Screenshot 3](https://github.com/DipakSarmah/MERN-E-Commerce/assets/92313801/1e1a0762-fc49-41eb-ab8a-27504d8514be)
