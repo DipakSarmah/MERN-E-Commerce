@@ -40,8 +40,8 @@ This project is a full-featured E-commerce application built using the MERN stac
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
-    cd your-repo-name
+    git clone https://github.com/DipakSarmah/MERN-E-Commerce.git
+    cd MERN-E-Commerce
     ```
 
 2. Install server dependencies:
