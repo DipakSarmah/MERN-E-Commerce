@@ -58,11 +58,5 @@ This project is a full-featured E-commerce application built using the MERN stac
     npm install
     ```
 
-### Environment Variables
 
-Create a `.env` file in the root of your server directory and add the following environment variables:
 
-```env
-MONGO_URI=your_mongodb_uri
-PAYPAL_CLIENT_ID=your_paypal_client_id
-JWT_SECRET=your_jwt_secret
